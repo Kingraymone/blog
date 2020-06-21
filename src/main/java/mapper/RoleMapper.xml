@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.RoleMapper">
+    <select id="selectRoles"  resultType="model.Role">
+        select * from t_role;
+    </select>
+
+    <select id="selectRoleById" parameterType="java.lang.Integer" resultType="model.Role">
+        <if test="value != 0">
+            select * from t_role where role_id=#{value}
+        </if>
+    </select>
+</mapper>

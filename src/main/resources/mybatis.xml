@@ -25,6 +25,8 @@
     </environments>
     <!--映射器-->
     <mappers>
-        <mapper resource="mapper/UserMapper.xml"/>
+        <!--<mapper resource="mapper/UserMapper.xml"/>
+        <mapper class="mapper.RoleMapper"/>-->
+        <package name="mapper"/>
     </mappers>
 </configuration>
