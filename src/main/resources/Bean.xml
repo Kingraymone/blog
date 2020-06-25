@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="role" class="model.Role">
+        <property name="roleId" value="2"/>
+        <property name="rolename" value="系统管理员"/>
+    </bean>
+    <bean id="user" class="model.User">
+        <property name="userId" value="2"/>
+        <property name="username" value="king"/>
+    </bean>
+    <bean id="constructorTest" class="service.ConstructorTest">
+        <constructor-arg name="name" value="king"/>
+        <constructor-arg name="i" value="10"/>
+    </bean>
+</beans>

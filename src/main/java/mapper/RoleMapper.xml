@@ -8,7 +8,7 @@
 
     <select id="selectRoleById" parameterType="java.lang.Integer" resultType="model.Role">
         <if test="value != 0">
-            select * from t_role where role_id=#{value}
+            select * from t_role where role_id=#{dddas}
         </if>
     </select>
 </mapper>
