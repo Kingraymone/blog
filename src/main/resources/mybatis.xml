@@ -4,17 +4,17 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <!--引入资源文件-->
-    <properties resource="resource.properties"/>
+   <!-- <properties resource="resource.properties"/>-->
     <settings>
         <!--日志打印-->
         <setting name="logImpl" value="LOG4J2" />
     </settings>
-    <!--配置数据库环境-->
+    <!--配置数据库环境
     <environments default="mysql">
         <environment id="mysql">
-            <!--事务类型-->
+            &lt;!&ndash;事务类型&ndash;&gt;
             <transactionManager type="JDBC"/>
-            <!--数据库连接池-->
+            &lt;!&ndash;数据库连接池&ndash;&gt;
             <dataSource type="POOLED">
                 <property name="username" value="${username}"/>
                 <property name="url" value="${url}"/>
@@ -23,10 +23,10 @@
             </dataSource>
         </environment>
     </environments>
-    <!--映射器-->
+    &lt;!&ndash;映射器&ndash;&gt;
     <mappers>
-        <!--<mapper resource="mapper/UserMapper.xml"/>
-        <mapper class="mapper.RoleMapper"/>-->
-        <package name="mapper"/>
-    </mappers>
+        &lt;!&ndash;<com.king.mapper resource="com.king.mapper/UserMapper.xml"/>
+        <com.king.mapper class="com.king.mapper.RoleMapper"/>&ndash;&gt;
+        <package name="com.king.mapper"/>
+    </mappers>-->
 </configuration>

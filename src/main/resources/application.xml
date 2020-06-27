@@ -1,26 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+        https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
     <!--导入xml资源-->
-    <import resource="Bean.xml"/>
+   <import resource="spring-mvc.xml"/>
     <!--启用注解配置 只在同一应用程序上下文起作用-->
-    <context:annotation-config/>
+    <!--<context:annotation-config/>-->
     <!--属性导入 PropertySourcesPlaceholderConfigurer-->
     <context:property-placeholder location="classpath:resource.properties"/>
     <!--属性覆盖 PropertyOverrideConfigurer-->
     <!--<context:property-override location="classpath:resource.properties"/>-->
     <!--spring组件扫描 包含注解配置-->
-    <context:component-scan base-package="service"/>
+    <context:component-scan base-package="com.king.*"/>
 
-
-    <!--bean定义-->
-    <bean id="userTest" name="user1,user2;" class="model.UserTest">
-        <property name="user" ref="user"/>
-        <property name="role" ref="role"/>
-        <property name="name" value="Test"/>
+    <!--数据源配置-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <!--驱动-->
+        <property name="driverClassName" value="${db.driver}"/>
+        <!-- 数据库地址 -->
+        <property name="url" value="${db.url}"/>
+        <!-- 用户名 -->
+        <property name="username" value="${db.user}"/>
+        <!-- 密码 -->
+        <property name="password" value="${db.password}"/>
+        <!-- 最大连接池数量 -->
+        <property name="maxActive" value="${db.maxActive}"/>
+        <!-- 初始化物理连接个数 -->
+        <property name="initialSize" value="${db.initialSize}"/>
+        <!-- 最大等待时间 -->
+        <property name="maxWait" value="${db.maxWait}"/>
     </bean>
-    <bean class="service.PostBean"/>
+    <!--集成mybatis-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 指定连接资源 -->
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 指定配置文件 -->
+        <property name="configLocation" value="classpath:mybatis.xml"/>
+        <!--定义xml文件位置-->
+        <property name="mapperLocations" value="classpath:com/king/mapper/*.xml"/>
+    </bean>
+    <!--自动扫描创建mapperBean-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.king.mapper"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+    <!--配置SqlSessionTemplate-->
+    <bean id="sqlSessionTemplate"  class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg ref="sqlSessionFactory"/>
+    </bean>
+
+    <!--事务管理器配置数据源事务-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!--使用注解定义事务-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
 </beans>

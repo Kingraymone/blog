@@ -1,7 +1,7 @@
-import mapper.RoleMapper;
-import mapper.UserMapper;
-import model.Role;
-import model.User;
+import com.king.mapper.RoleMapper;
+import com.king.mapper.UserMapper;
+import com.king.model.Role;
+import com.king.model.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

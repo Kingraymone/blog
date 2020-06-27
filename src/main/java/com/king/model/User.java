@@ -1,10 +1,9 @@
-package model;
+package com.king.model;
 
 import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
 public class User implements Serializable, Cloneable {
