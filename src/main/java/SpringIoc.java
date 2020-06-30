@@ -1,12 +1,11 @@
-import com.king.serviceimpl.UserServiceImpl;
-import configuration.Config;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import top.king.serviceimpl.UserServiceImpl;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringIoc {
     public static void main(String[] args) {
-        ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
+        //ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
         ApplicationContext context1 = new ClassPathXmlApplicationContext("classpath:application.xml");
         UserServiceImpl bean = context1.getBean("userServiceImpl", UserServiceImpl.class);
         bean.selectUsers();

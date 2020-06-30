@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
     <!--导入xml资源-->
-   <import resource="spring-mvc.xml"/>
+    <!--<import resource="spring-mvc.xml"/>-->
     <!--启用注解配置 只在同一应用程序上下文起作用-->
     <!--<context:annotation-config/>-->
     <!--属性导入 PropertySourcesPlaceholderConfigurer-->
@@ -13,7 +13,7 @@
     <!--属性覆盖 PropertyOverrideConfigurer-->
     <!--<context:property-override location="classpath:resource.properties"/>-->
     <!--spring组件扫描 包含注解配置-->
-    <context:component-scan base-package="com.king.*"/>
+    <context:component-scan base-package="top.king.*"/>
 
     <!--数据源配置-->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
@@ -39,15 +39,15 @@
         <!-- 指定配置文件 -->
         <property name="configLocation" value="classpath:mybatis.xml"/>
         <!--定义xml文件位置-->
-        <property name="mapperLocations" value="classpath:com/king/mapper/*.xml"/>
+        <property name="mapperLocations" value="classpath:top/king/mapper/*.xml"/>
     </bean>
     <!--自动扫描创建mapperBean-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.king.mapper"/>
+        <property name="basePackage" value="top.king.mapper"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
     <!--配置SqlSessionTemplate-->
-    <bean id="sqlSessionTemplate"  class="org.mybatis.spring.SqlSessionTemplate">
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg ref="sqlSessionFactory"/>
     </bean>
 

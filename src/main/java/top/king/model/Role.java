@@ -1,4 +1,4 @@
-package com.king.model;
+package top.king.model;
 
 import lombok.Data;
 

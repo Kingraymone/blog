@@ -1,8 +1,8 @@
 package configuration;
 
-import com.king.model.Role;
-import com.king.model.User;
-import com.king.model.UserTest;
+import top.king.model.Role;
+import top.king.model.User;
+import top.king.model.UserTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ComponentScan;
@@ -12,7 +12,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @Import(Bean.class)
 @Configuration
-@ComponentScan("com.king.service")
+@ComponentScan("top.king.service")
 @PropertySource("classpath:resource.properties")
 public class Config {
     @Value("${username}")

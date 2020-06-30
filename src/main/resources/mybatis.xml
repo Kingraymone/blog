@@ -26,7 +26,7 @@
     &lt;!&ndash;映射器&ndash;&gt;
     <mappers>
         &lt;!&ndash;<com.king.mapper resource="com.king.mapper/UserMapper.xml"/>
-        <com.king.mapper class="com.king.mapper.RoleMapper"/>&ndash;&gt;
+        <com.king.mapper class="RoleMapper"/>&ndash;&gt;
         <package name="com.king.mapper"/>
     </mappers>-->
 </configuration>

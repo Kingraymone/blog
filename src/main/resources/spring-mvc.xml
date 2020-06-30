@@ -8,7 +8,7 @@
     <mvc:annotation-driven/>
 
     <!--注解扫描-->
-    <context:component-scan base-package="com.king"/>
+    <context:component-scan base-package="top.king"/>
 
 <!--    &lt;!&ndash;静态资源处理，mapping：匹配URL，location：静态资源在WebApp中的位置&ndash;&gt;
     <mvc:resources mapping="/common/**" location="/common/"/>
@@ -16,16 +16,18 @@
     <mvc:resources mapping="/image/**" location="/image/"/>
     <mvc:resources mapping="/js/**" location="/js/"/>-->
 
-    <!-- 注解的映射器 -->
+<!--
+    &lt;!&ndash; 注解的映射器 &ndash;&gt;
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
 
-    <!-- 注解的适配器 -->
+    &lt;!&ndash; 注解的适配器 &ndash;&gt;
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
+-->
 
     <!-- 视图解析器 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="contentType" value="text/html"/>
-        <property name="prefix" value="/jsp/"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 </beans>

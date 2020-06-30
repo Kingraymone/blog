@@ -1,7 +1,7 @@
 package configuration;
 
-import com.king.model.Role;
-import com.king.model.User;
+import top.king.model.Role;
+import top.king.model.User;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
