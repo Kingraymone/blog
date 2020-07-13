@@ -5,11 +5,14 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringIoc {
     public static void main(String[] args) {
+        System.out.println("\uE000\uE001\uE002");
+    }
+    /*public static void main(String[] args) {
         //ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
         ApplicationContext context1 = new ClassPathXmlApplicationContext("classpath:application.xml");
         UserServiceImpl bean = context1.getBean("userServiceImpl", UserServiceImpl.class);
         bean.selectUsers();
-    }
+    }*/
 
 
     /*public static void main(String[] args) {

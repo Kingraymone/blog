@@ -3,13 +3,14 @@ package top.king.serviceimpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import top.king.mapper.UserMapper;
 import top.king.model.User;
 import top.king.service.UserService;
 
 import java.util.List;
 
-@Component
+@Service
 @Scope("prototype")
 public class UserServiceImpl implements UserService {
     @Autowired
