@@ -19,8 +19,8 @@
 
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/"/>
-            <bean class="top.king.controller.EncodeInterceptor"/>
+            <mvc:mapping path="/**"/>
+            <bean class="top.king.controller.LoginHandlerInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 <!--<&#45;&#45;    &lt;!&ndash;静态资源处理，mapping：匹配URL，location：静态资源在WebApp中的位置&ndash;&gt;
