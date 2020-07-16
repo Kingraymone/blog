@@ -2,7 +2,6 @@ package top.king.serviceimpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import top.king.mapper.UserMapper;
 import top.king.model.User;
@@ -20,5 +19,9 @@ public class UserServiceImpl implements UserService {
     public void selectUsers() {
         List<User> users = userMapper.selectUsers();
         System.out.println(users);
+    }
+
+    public boolean verifyUser(User user) {
+        return userMapper.verifyUser(user) > 0;
     }
 }

@@ -5,4 +5,11 @@
     <select id="selectUsers" resultType="top.king.model.User">
         select * from t_user;
     </select>
+
+    <select id="verifyUser" parameterType="top.king.model.User" resultType="java.lang.Integer">
+        select count(user_id)
+        from t_user
+        where username=#{username}
+        and password=#{password}
+    </select>
 </mapper>

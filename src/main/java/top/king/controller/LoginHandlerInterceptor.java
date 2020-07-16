@@ -11,12 +11,12 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String uri = request.getRequestURI();
-        String remote = request.getRemoteAddr()+request.getRemotePort();
-        System.out.println("远程连接："+remote);
+        String remote = request.getRemoteAddr();
+        System.out.println("远程连接：" + remote);
         if ("/k/user".equals(uri) || "/k/login".equals(uri)) {
             return true;
         } else {
-            Object user = request.getSession().getAttribute(remote+"user");
+            Object user = request.getSession().getAttribute(remote + "user");
             if (!ObjectUtils.isEmpty(user)) {
                 return true;
             }

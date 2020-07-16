@@ -43,5 +43,10 @@ public class User implements Serializable, Cloneable {
      * 状态
      */
     private String status;
+
+    /**
+     * 添加字段：是否记住密码
+     */
+    private String remember;
 }
 
