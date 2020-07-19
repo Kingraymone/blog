@@ -1,11 +1,12 @@
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import top.king.serviceimpl.UserServiceImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import top.king.model.User;
 
 public class SpringIoc {
     public static void main(String[] args) {
-        System.out.println("\uE000\uE001\uE002");
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:bean.xml");
+        User user = context.getBean("user", User.class);
+        System.out.println(user);
     }
     /*public static void main(String[] args) {
         //ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);

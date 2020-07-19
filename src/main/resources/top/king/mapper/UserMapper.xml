@@ -3,13 +3,31 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="top.king.mapper.UserMapper">
     <select id="selectUsers" resultType="top.king.model.User">
-        select * from t_user;
+        select user_id as userId, t.*
+        from t_user t;
     </select>
 
     <select id="verifyUser" parameterType="top.king.model.User" resultType="java.lang.Integer">
         select count(user_id)
         from t_user
-        where username=#{username}
-        and password=#{password}
+        where username = #{username}
+          and password = #{password}
     </select>
+    <delete id="deleteUser" parameterType="java.lang.String">
+        delete
+        from t_user
+        where user_id = #{primaryKey}
+    </delete>
+    <insert id="inserUser" parameterType="top.king.model.User">
+        insert into t_user (user_id)
+        values (#{userId})
+    </insert>
+    <update id="updateUser" parameterType="top.king.model.User">
+        update t_user
+        <set>
+                username = #{username}
+        </set>
+        where
+        user_id = #{userId}
+    </update>
 </mapper>

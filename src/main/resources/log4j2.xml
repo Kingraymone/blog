@@ -4,7 +4,7 @@
 <!--monitorinterval:自动重新配置的监测间隔时间，最小5秒 -->
 <Configuration status="WARN" monitorinterval="2">
     <properties>
-        <Property name="log-path">logs</Property>
+        <Property name="log-path">D:\\logs</Property>
     </properties>
     <Appenders>
         <Console name="console">

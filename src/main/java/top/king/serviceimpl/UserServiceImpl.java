@@ -16,12 +16,45 @@ public class UserServiceImpl implements UserService {
     UserMapper userMapper;
 
     @Override
-    public void selectUsers() {
-        List<User> users = userMapper.selectUsers();
-        System.out.println(users);
-    }
-
     public boolean verifyUser(User user) {
         return userMapper.verifyUser(user) > 0;
+    }
+
+    @Override
+    public List<User> selectUsers() {
+        List<User> users = null;
+        try {
+            users = userMapper.selectUsers();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return users;
+    }
+
+    @Override
+    public void updateUser(User user) {
+        try {
+            userMapper.updateUser(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void insertUser(User user) {
+        try {
+            userMapper.inserUser(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteUser(String primaryKey) {
+        try {
+            userMapper.deleteUser(primaryKey);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

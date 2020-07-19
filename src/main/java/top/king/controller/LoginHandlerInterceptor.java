@@ -10,10 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginHandlerInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String uri = request.getRequestURI();
+        return true;
+        /*String uri = request.getRequestURI();
         String remote = request.getRemoteAddr();
         System.out.println("远程连接：" + remote);
-        if ("/k/user".equals(uri) || "/k/login".equals(uri)) {
+        if ("/k/index".equals(uri) || "/k/login".equals(uri)) {
             return true;
         } else {
             Object user = request.getSession().getAttribute(remote + "user");
@@ -21,8 +22,8 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
                 return true;
             }
         }
-        response.sendRedirect("/k/login");
-        return false;
+        response.sendRedirect("/k/index");
+        return false;*/
     }
 
     @Override

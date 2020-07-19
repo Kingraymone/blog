@@ -25,7 +25,7 @@
 </head>
 <body>
 <h1>${message}</h1>
-<form action="/k/user" method="post">
+<form action="/k/login" method="post">
     <label>用户名：</label><input type="text" name="username" value="<%=username%>"><br/>
     <label>密码：</label><input id="pw" type="password" name="password" value="<%=password%>">
     <input id="ck" type="checkbox" onclick="hideShowPsw()"/><label>显示</label>
