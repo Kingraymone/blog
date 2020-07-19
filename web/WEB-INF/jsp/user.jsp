@@ -1,13 +1,6 @@
+<%@ page import="com.fasterxml.jackson.databind.ObjectMapper" %>
 <%@ page import="top.king.model.User" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.fasterxml.jackson.databind.util.JSONPObject" %>
-<%@ page import="com.fasterxml.jackson.databind.ObjectMapper" %><%--
-  Created by IntelliJ IDEA.
-  User: wangqi26959
-  Date: 2020-07-19
-  Time: 10:28
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -49,16 +42,16 @@
 <script type="text/javascript">
     function modify(userid) {
         var user = {
-            "userId":userid
+            "userId": userid
         };
-        user.username="test";
+        user.username = "test";
         var xhr = new XMLHttpRequest();
         xhr.timeout = 30000;
         xhr.ontimeout = function (event) {
             alert("请求超时！");
         };
         xhr.open('POST', '/user/update');
-        xhr.setRequestHeader("content-type","application/json");
+        xhr.setRequestHeader("content-type", "application/json");
         var json = JSON.stringify(user);
         xhr.send(json);
         xhr.onreadystatechange = function () {
@@ -67,6 +60,7 @@
             }
         }
     }
+
     function del(count) {
         var xhr = new XMLHttpRequest();
         xhr.timeout = 30000;
@@ -74,8 +68,8 @@
             alert("请求超时！");
         };
         xhr.open('POST', '/user/delete');
-        xhr.setRequestHeader("content-type","application/x-www-form-urlencoded;charset=UTF-8");
-        xhr.send("primaryKey="+count);
+        xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded;charset=UTF-8");
+        xhr.send("primaryKey=" + count);
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 location.reload();
