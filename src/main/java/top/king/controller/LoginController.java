@@ -1,27 +1,32 @@
 package top.king.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ObjectUtils;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import top.king.model.User;
+import top.king.service.FileResourceService;
 import top.king.serviceimpl.UserServiceImpl;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @RequestMapping("/k")
 @Controller
 public class LoginController {
     @Autowired
     UserServiceImpl userService;
+
+    @Autowired
+    FileResourceService fileResourceService;
+
+
 
     @RequestMapping("/index")
     public ModelAndView index(ModelAndView mav) {
@@ -60,9 +65,9 @@ public class LoginController {
     }
 
     @RequestMapping("/model")
-    @ResponseBody
-    public User james(@RequestBody List<User> list, HttpServletResponse response) {
-        list.get(0).setMotto("you know that");
-        return list.get(0);
+    public ModelAndView james(ModelAndView mav) {
+        mav.setViewName("main");
+        mav.addObject("fileNames", fileResourceService.searchFiles());
+        return mav;
     }
 }

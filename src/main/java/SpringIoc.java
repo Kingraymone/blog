@@ -4,7 +4,8 @@ import top.king.model.User;
 
 public class SpringIoc {
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:bean.xml");
+        System.getProperties().list(System.out);
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:bean.xml");
         User user = context.getBean("user", User.class);
         System.out.println(user);
     }

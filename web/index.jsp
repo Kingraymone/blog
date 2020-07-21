@@ -1,17 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-  String username = "";
-  String password = "";
-  //获取当前站点的所有Cookie
-  Cookie[] cookies = request.getCookies();
-  for (int i = 0; i < cookies.length; i++) {//对cookies中的数据进行遍历，找到用户名、密码的数据
-    if ("username".equals(cookies[i].getName())) {
-      username = cookies[i].getValue();
-    } else if ("password".equals(cookies[i].getName())) {
-      password = cookies[i].getValue();
-    }
-  }
-%>
 <html>
 <head>
   <title>Login</title>
@@ -19,8 +6,8 @@
 <body>
 <h1>${message}</h1>
 <form action="/k/login" method="post">
-  <label>用户名：</label><input type="text" name="username" value="<%=username%>"><br/>
-  <label>密码：</label><input id="pw" type="password" name="password" value="<%=password%>">
+  <label>用户名：</label><input type="text" name="username" value=""><br/>
+  <label>密码：</label><input id="pw" type="password" name="password" value="">
   <input id="ck" type="checkbox" onclick="hideShowPsw()"/><label>显示</label>
   <input id="rm" type="checkbox" name="remember"/><label>记住密码</label><br/>
   <input type="submit" value="登陆"/><input type="reset" value="重置"/>
