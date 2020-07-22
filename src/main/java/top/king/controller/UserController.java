@@ -18,6 +18,7 @@ import top.king.serviceimpl.UserServiceImpl;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 
 @RequestMapping("/user")
@@ -83,17 +84,19 @@ public class UserController {
      */
     @RequestMapping("/upload")
     @ResponseBody
-    public void uploadFile(MultipartFile file, HttpServletRequest request) {
-        String filename = file.getOriginalFilename();
-        File document = new File(path + separator + filename);
-        System.out.println(document.getAbsolutePath());
-        try {
-            if (!document.exists()) {
-                document.createNewFile();
+    public void uploadFile(List<MultipartFile> files, HttpServletRequest request) {
+        for (MultipartFile file : files) {
+            String filename = file.getOriginalFilename();
+            File document = new File(path + separator + filename);
+            System.out.println(document.getAbsolutePath());
+            try {
+                if (!document.exists()) {
+                    document.createNewFile();
+                }
+                file.transferTo(document);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            file.transferTo(document);
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 

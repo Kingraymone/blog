@@ -12,10 +12,11 @@
     <br/>
     <br/>
     <form  action="/user/upload" method="post" enctype="multipart/form-data">
-        选择文件:<input type="file" name="file" />
+        选择文件:<input type="file" name="files" />
         <br />
-        标题：<label>
-        <input type="text" name="title" />
+        选择文件:<input type="file" name="files" />
+        <br />
+
     </label>
         <br />
         <button type="submit">提交</button>
@@ -23,7 +24,7 @@
     <br/>
     <br/>
     <c:forEach items="${fileNames}" var="name">
-        <a href="/user/download?fileName=${name}" >${name}</a>
+        <a href="/user/download?fileName=${name}" >${name}</a><br/>
     </c:forEach>
 
 </body>
