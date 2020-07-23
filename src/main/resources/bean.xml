@@ -3,8 +3,9 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="user" class="top.king.model.User">
+    <bean id="user" name="user2,user3" class="top.king.model.User">
         <property name="username" value="king"/>
         <property name="password" value="123"/>
     </bean>
+    <bean id="testApplicationListener" class="top.king.serviceimpl.TestApplicationListener"/>
 </beans>
