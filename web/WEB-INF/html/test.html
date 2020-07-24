@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KKK</title>
+</head>
+<!-- 引入Vue.js -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+	<div id="app">
+	  {{ message }} 
+	  {{reversedMessage}}</br>
+	  <input v-model="question"/></br>
+	  {{ answer }}</br>
+	  <div v-if="Math.random() > 0.5">
+	  Now you see me
+	</div>
+	<div v-else>
+	  Now you don't
+	</div>
+	</div>
+</body>
+<script>
+	/* 创建Vue实例 */
+	var app = new Vue({
+	  /* vue实例绑定的挂载元素 */
+	  el: '#app',
+	  /* vue中响应式属性 */
+	  data: {
+	    message: 'Hello Vue!',
+	    question:'',
+	    answer:''
+	  },
+	  // 计算属性基于响应式依赖进行缓存的，只有依赖发生改变才重新计算
+	  computed: {
+	   reversedMessage: function () {
+	     return this.message.split('').reverse().join('')
+	   }
+	 },
+	 // 侦听器，在数据变化时执行异步或开销较大的操作使用
+	 watch:{
+		question:function(question){
+			this.answer=question+'yes';
+		}
+	 }
+	})
+</script>
