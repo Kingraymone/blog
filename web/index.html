@@ -12,8 +12,10 @@
 	{{ message }}</br>
 	{{reversedMessage}}</br>
 	<a v-on:click="showTitle" v-bind:title="title">显示</a>
-	<div>
-		<todo-item></todo-item>
+	<div :style="{fontSize:fontsize+'em'}">
+		<todo-item :message="message" @enlarge="fontsize+=$event">
+			{{message}}
+		</todo-item>
 	</div>
 	</br>
 	<p>ask a question</p>
@@ -26,7 +28,21 @@
 </body>
 <script>
 Vue.component('todo-item', {
-  template: '<li>这是个待办项</li>'
+  props:['message'],
+  data(){
+	return{
+      count: 100
+	}
+  },
+  methods:{
+	large(){
+		this.$emit('enlarge',0.1);
+	}
+  },
+  template: '<div>'+
+		'<li  v-on:click="count++">这是个待办项 {{count}}-----{{message}} </li> <button @click="large">放大</button>'+
+		'<slot></slot>'+
+		'</div>'
 });
 var app = new Vue({
   el: '#app',
@@ -34,7 +50,8 @@ var app = new Vue({
     message: 'Hello Vue!',
 	title:"123",
 	question:"",
-	answer:""
+	answer:"",
+	fontsize:2
   },
   methods:{
 	showTitle(){
